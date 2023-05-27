@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+int main() {
+ int pilihan;
+ string ulang;
+ float nilai[3];
+do{
+ cout << "MENGKONVERSI NILAI RANGKAIAN WYE-DELTA \n";
+ cout << "=================================== \n";
+ cout << "Pilih konversi yang diinginkan:\n";
+ cout << "1. Wye ke Delta\n";
+ cout << "2. Delta ke Wye\n";
+ cout << "=================================== \n";
+ cout << "Masukkan pilihan (1 atau 2): ";
+ cin >> pilihan;
+ cout << "\n";
+ if (pilihan == 1) {
+ cout << "Masukkan nilai resistor R1, R2, dan R3 \n";
+ for (int i = 0; i < 3; i++) {
+ cout << "nilai resistor R" << i+1 << " : ";
+ cin >> nilai[i];
+ }
+ float nilaidelta[3];
+ nilaidelta[0] = ((nilai[0] * nilai[1]) + (nilai[1] * nilai[2]) + (nilai[2]) * 
+(nilai[0])) / (nilai[0]);
+ nilaidelta[1] = ((nilai[0] * nilai[1]) + (nilai[1] * nilai[2]) + (nilai[2]) * 
+(nilai[0])) / (nilai[1]);
+ nilaidelta[2] = ((nilai[0] * nilai[1]) + (nilai[1] * nilai[2]) + (nilai[2]) * 
+(nilai[0])) / (nilai[2]);
+ 
+ cout << "\n";
+ cout << "Nilai Resistor 'R' Pada Rangkaian Delta" <<endl;
+ cout << "Ra : " << nilaidelta[0] << endl;
+ cout << "Rb : " << nilaidelta[1] << endl;
+cout << "Rc : " << nilaidelta[2] << endl;
+ 
+ 
+ }
+ else if (pilihan == 2) {
+ cout << "Masukkan nilai resistor Ra, Rb, dan Rc" << endl;
+ cout << "Nilai resistor Ra : ";
+ cin >> nilai[0];
+ cout << "Nilai resistor Rb : ";
+ cin >> nilai[1];
+ cout << "Nilai resistor Rc : ";
+ cin >> nilai[2];
+ float nilaiwye[3];
+ nilaiwye[0] = (nilai[1] * nilai[2]) / (nilai[0] + nilai[1] + nilai[2]);
+ nilaiwye[1] = (nilai[2] * nilai[0]) / (nilai[0] + nilai[1] + nilai[2]);
+ nilaiwye[2] = (nilai[0] * nilai[1]) / (nilai[0] + nilai[1] + nilai[2]);
+ 
+ cout << "\n";
+ cout << "Nilai Resistor 'R' Pada Rangkaian Wye"<< endl;
+ cout << "R1 : " << nilaiwye[0] << "ohm" << endl;
+ cout << "R2 : " << nilaiwye[1] << "ohm" << endl;
+ cout << "R3 : " << nilaiwye[2] << "ohm" << endl;
+ }
+ else {
+ cout << "Pilihan tidak valid." << endl;
+ }
+ 
+ cout << "Apakah ingin mengulang ? (y/n) : ";
+cin >> ulang;
+ cout << "\n";
+ 
+ }while(ulang == "y");
+ return 0;
+}
